@@ -13,28 +13,43 @@ public class main {
         ArrayList<Triangle> twoEqualSides = new ArrayList<>();
         ArrayList<Triangle> squareCorners = new ArrayList<>();
         ArrayList<Triangle> others = new ArrayList<>();
-        Dot dot1 = new Dot(0, 1);
-        Dot dot2 = new Dot(1, 0);
-        Dot dot3 = new Dot(0, 0);
-        Triangle squareCorner = new Triangle(dot1, dot2, dot3);
+        Dot dotOne = new Dot(0, 1);
+        Dot dotTwo = new Dot(1, 0);
+        Dot dotThree = new Dot(0, 0);
+        Triangle squareCorner = new Triangle(dotOne, dotTwo, dotThree);
+        squareCorner.triangleOutPut();
         for(int i = 0; i < 8; i++) {
-            if(triangles[i].getTriangleType() == 1) {
-                threeEqualSides.add(triangle[i]);
+            if(triangles[i].getTriangleType() == "equilateral triangle") {
+                threeEqualSides.add(triangles[i]);
             }
-            else if(triangles[i].getTriangleType() == 2) {
-                twoEqualSides.add(triangle[i]);
+            else if(triangles[i].getTriangleType() ==
+                    "square corner triangle") {
+                twoEqualSides.add(triangles[i]);
             }
-            else if(triangles[i].getTriangleType() == 3) {
-                squareCorners.add(triangle[i]);
+            else if(triangles[i].getTriangleType() ==
+                    "isosceles triangle") {
+                squareCorners.add(triangles[i]);
             }
             else {
-                other.add(triangle[i]);
+                others.add(triangles[i]);
             }
         }
-        
+        System.out.println("The minimal arrea of arbitrary triangles is: " +
+                           others.get(minAreaFinder(others)).getArea());
     }
     public static boolean isEqual(double x, double y){
         final double EPS = 1e-9;
         return Math.abs(x-y) < EPS;
+    }
+    public static int minAreaFinder(ArrayList<Triangle> someTypeTriangle) {
+        double minArea = someTypeTriangle.get(0).getArea();
+        int tempIter = 0;
+        for(int i = 0; i < someTypeTriangle.size(); i++) {
+            if(someTypeTriangle.get(i).getArea() < minArea) {
+                minArea = someTypeTriangle.get(i).getArea();
+                tempIter = i;
+            }
+        }
+        return tempIter;
     }
 }
