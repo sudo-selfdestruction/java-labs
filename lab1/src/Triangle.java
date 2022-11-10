@@ -70,16 +70,14 @@ public class Triangle{
         );
         return area;
     }
-    public void triangleOutPut() {
+    public String toString() {
         DecimalFormat dF = new DecimalFormat( "#.###" );
-        System.out.println(
-                "1st dot: " + dF.format(dots[0].getXPos()) + " " + dF.format(dots[0].getYPos()) + "\n" +
-                "2nd dot: " + dF.format(dots[1].getXPos()) + " " + dF.format(dots[1].getYPos()) + "\n" +
-                "3rd dot: " + dF.format(dots[2].getXPos()) + " " + dF.format(dots[2].getYPos()) + "\n" +
-                "Perimeter: " + dF.format(perimeter) + "\n" +
-                "Area: " + dF.format(area) + "\n" +
-                "TriangleType: " + triangleType + "\n"
-        );
+        return "1st dot: (" + dF.format(dots[0].getXPos()) + ", " + dF.format(dots[0].getYPos()) + ")\n" +
+               "2nd dot: (" + dF.format(dots[1].getXPos()) + ", " + dF.format(dots[1].getYPos()) + ")\n" +
+               "3rd dot: (" + dF.format(dots[2].getXPos()) + ", " + dF.format(dots[2].getYPos()) + ")\n" +
+               "Perimeter: " + dF.format(perimeter) + "\n" +
+               "Area: " + dF.format(area) + "\n" +
+               "TriangleType: " + triangleType + ".\n";
     }
     public String typeChecker() {
         if(main.isEqual(edgeSizes[TriangleSides.AB.ordinal()],

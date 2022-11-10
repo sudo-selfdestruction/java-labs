@@ -7,7 +7,7 @@ public class main {
         Triangle triangles[] = new Triangle[8];
         for(int i = 0; i < 8; i++) {
             triangles[i] = new Triangle();
-            triangles[i].triangleOutPut();
+            System.out.println(triangles[i].toString());
         }
         ArrayList<Triangle> threeEqualSides = new ArrayList<>();
         ArrayList<Triangle> twoEqualSides = new ArrayList<>();
@@ -17,7 +17,7 @@ public class main {
         Dot dotTwo = new Dot(1, 0);
         Dot dotThree = new Dot(0, 0);
         Triangle squareCorner = new Triangle(dotOne, dotTwo, dotThree);
-        squareCorner.triangleOutPut();
+        System.out.println(squareCorner.toString());
         for(int i = 0; i < 8; i++) {
             if(triangles[i].getTriangleType() == "equilateral triangle") {
                 threeEqualSides.add(triangles[i]);
@@ -34,8 +34,10 @@ public class main {
                 others.add(triangles[i]);
             }
         }
-        System.out.println("The minimal arrea of arbitrary triangles is: " +
-                           others.get(minAreaFinder(others)).getArea());
+        System.out.println("\nThe minimal arrea of arbitrary triangles is: " +
+                           others.get(minAreaFinder(others)).getArea() +
+                           "\n\nThis triangle specs:\n\n" +
+                           others.get(minAreaFinder(others)).toString());
     }
     public static boolean isEqual(double x, double y){
         final double EPS = 1e-9;
